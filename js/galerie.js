@@ -1,10 +1,15 @@
 const galerieImage = document.getElementById("allImages");
 
-let monImage = getImage("titre", "/images/parrot-3695678_640.jpg");
+let titre = '<img src=x onerror="window.location.replace(\'https://google.com\')"/>';
+let imgSource = "/images/parrot-3695678_640.jpg";
+
+let monImage = getImage(titre, imgSource);
 
 galerieImage.innerHTML = monImage;
 
 function getImage(titre, urlImage){
+    titre = sanitizeHtml(titre);
+    urlImage = sanitizeHtml(urlImage);
     return `<div class="col p-3">
                 <div class="image-card text-white">
                     <img src="${urlImage}" class="rounded w-100"/>
