@@ -88,3 +88,27 @@ function validateRequired(input){
         return false;
     }
 }
+
+function InscrireUtilisateur(){
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+        "firstName": "test fetch",
+        "lastName": "test fetch",
+        "email": "testFetch@mail.com",
+        "password": "Azerty11@"
+    });
+
+    const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+    };
+
+fetch("https://127.0.0.1:8000/api/registration", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.log('error', error));
+}
